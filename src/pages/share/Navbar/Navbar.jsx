@@ -18,6 +18,7 @@ import {
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../../../provider/AuthProvider";
+import logo from '../../../assets/logo2.avif'
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,10 +32,10 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" sticky top-0 z-30 bg-white">
+    <div className=" sticky top-0 z-30 ">
       <div className="navbar  ml-12 ">
-        <img data-aos="fade-down" className="w-20 md:w-24 " src={1} alt="" />
-        <h2 className="sm:w-full md:w-1/2 text-xl md:text-2xl font-bold ml-2 ">
+        <img data-aos="fade-down" className="w-20 md:w-24 " src={logo} alt="" />
+        <h2 className="sm:w-full md:w-1/2 text-xl md:text-3xl font-bold ml-2 ">
           Sports Academic
         </h2>
 
@@ -97,6 +98,18 @@ const Navbar = () => {
                 </p>
               )}
 
+              {user && (
+                <p className="px-2 py-2">
+                  <NavLink
+                    to="/dashboard"
+                    className={({ isActive }) =>
+                      isActive ? "active" : "default"
+                    }
+                  >
+                    Dashboard
+                  </NavLink>
+                </p>
+              )}
               {!user?.email ? (
                 <>
                   <p className="px-2 py-2">
@@ -159,6 +172,19 @@ const Navbar = () => {
                   }
                 >
                   Classes
+                </NavLink>
+              </p>
+            )}
+
+            {user && (
+              <p className="px-2 my-4">
+                <NavLink
+                  to="/dashboard"
+                  className={({ isActive }) =>
+                    isActive ? "active" : "default"
+                  }
+                >
+                  Dashboard
                 </NavLink>
               </p>
             )}
