@@ -41,6 +41,7 @@ const AllUsers = () => {
         })
         .then(res => res.json())
         .then(data => {
+          console.log(data)
             if(data.modifiedCount > 0){
                 refetch();
                 Swal.fire({

@@ -3,6 +3,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const ManageClasses = () => {
   const { user, loading } = useAuth();
@@ -12,8 +13,56 @@ const ManageClasses = () => {
     const res = await axiosSecure.get("/class");
     return res.data;
   });
+//   console.log(allClasses);
 
-  console.log(allClasses);
+
+
+  const handleMakeApprove =(classes) =>{
+    // console.log(classes)
+    fetch(`http://localhost:5000/class/approve/${classes._id}`, {
+      method: 'PATCH'
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log(data)
+      if(data.modifiedCount > 0){
+          Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: `${classes.name} is an Approve By Admin!`,
+              showConfirmButton: false,
+              timer: 1500
+            })
+      }
+  })
+}
+
+
+
+
+const handleMakeDeny =(classes) =>{
+    // console.log(classes)
+    fetch(`http://localhost:5000/class/deny/${classes._id}`, {
+      method: 'PATCH'
+  })
+  .then(res => res.json())
+  .then(data => {
+    // console.log(data)
+      if(data.modifiedCount > 0){
+        //   refetch();
+          Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: `${classes.name} is an  Deny By Admin!`,
+              showConfirmButton: false,
+              timer: 1500
+            })
+      }
+  })
+}
+
+
+
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -28,7 +77,8 @@ const ManageClasses = () => {
             <th>Price</th>
             <th>Seats</th>
             <th>Status</th>
-            <th>Enroll</th>
+            <th>Status</th>
+            <th>Status</th>
             <th>Feedback</th>
           </tr>
         </thead>
@@ -48,16 +98,40 @@ const ManageClasses = () => {
               <td>{classes.instructorEmail}</td>
               <td>{classes.price}</td>
               <td>{classes.seats}</td>
-              <td>{classes.status}</td>
-              <td>4</td>
-              <td> 
-       
-              {
-                classes.status === 'pending'  ? <button onClick={()=>handleMakeAdmin(user)} className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white   `}> Feedback </button> :
-                 ""
-              }
+              <td>{
+                classes.status === 'pending' ? 'pending' :  classes.status === 'approve'  ? "approve" :  classes.status === 'deny' ? " deny" : ''  
+        }
+        
+        
+        </td>
+        <td> 
            
+        {
+            classes.status==="approve"  ||  classes.status==="deny" ? <button onClick={()=>handleMakeApprove( classes)} className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white  opacity-50 cursor-not-allowed `}>  Approve </button> :
+            <button onClick={()=>handleMakeApprove(classes)} className={`btn  btn-ghost bg-purple-500 hover:bg-purple-600 text-white  `}> Approve </button>
+        }
+     
+    
+    </td>
+    
+    <td> 
+           
+     
+    {
+        classes.status === "deny" || classes.status === "approve" ? <button onClick={()=>handleMakeDeny(classes)} className={`btn btn-ghost bg-purple-500 hover:bg-purple-600 text-white   opacity-50 cursor-not-allowed`}> Deny  </button> :
+        <button onClick={()=>handleMakeDeny(classes)} className={`btn btn-ghost bg-purple-500 hover:bg-purple-600 text-white  `}>Deny </button>
+    }
+    
+       
+          </td>
+          <td>
           
+          {
+            classes.status === 'deny'  ? <button onClick={()=>handleMakeAdmin(user)} className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white   `}> Feedback </button> :
+            <button onClick={()=>handleMakeAdmin(user)} className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white  opacity-50 cursor-not-allowed`}> Feedback </button>
+          }
+       
+      
           </td>
             </tr>
           ))}

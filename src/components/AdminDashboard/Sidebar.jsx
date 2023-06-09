@@ -50,7 +50,7 @@ const Sidebar = () => {
           {/* Branding & Profile Info */}
           <div>
             <div className='w-full hidden md:flex py-2 justify-center items-center bg-rose-100 mx-auto'>
-           <h3>LOGO</h3>
+           <h3>Admin Dashboard</h3>
             </div>
             <div className='flex flex-col items-center mt-6 -mx-2'>
               <Link to='/dashboard'>
