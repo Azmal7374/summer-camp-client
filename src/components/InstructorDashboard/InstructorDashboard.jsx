@@ -4,8 +4,9 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { GrLogout } from 'react-icons/gr'
 import { FcSettings } from 'react-icons/fc'
 import { AiOutlineBars } from 'react-icons/ai'
-import {BsFillHouseAddFill } from 'react-icons/bs'
+import { GrFormAdd } from 'react-icons/gr'
 import { AuthContext } from '../../provider/AuthProvider'
+import { FaHome, FaUtensils, FaWallet } from 'react-icons/fa'
 const InstructorDashboard = () => {
   const navigate = useNavigate()
   const [toggle, setToggle] = useState(false)
@@ -49,8 +50,8 @@ const InstructorDashboard = () => {
         <div>
           {/* Branding & Profile Info */}
           <div>
-            <div className='w-full hidden md:flex py-2 justify-center items-center bg-rose-100 mx-auto'>
-           <h3>LOGO</h3>
+            <div className='w-full hidden md:flex py-2 justify-center items-center bg-purple-100 mx-auto   font-bold'>
+           <h3>Instructor Dashboard</h3>
             </div>
             <div className='flex flex-col items-center mt-6 -mx-2'>
               <Link to='/dashboard'>
@@ -78,27 +79,27 @@ const InstructorDashboard = () => {
           <div className='flex flex-col justify-between flex-1 mt-6'>
             <nav>
             <NavLink
-            to='/dashboard/adminhome'
+            to='/dashboard/addaclass'
             className={({ isActive }) =>
               `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-purple-400  hover:text-white ${
                 isActive ? 'bg-purple-400  text-gray-700' : 'text-gray-600'
               }`
             }
           >
-            <FcSettings className='w-5 h-5' />
+            <GrFormAdd className='w-5 h-5' />
 
             <span className='mx-4 font-medium'>Add A Class</span>
           </NavLink>
 
           <NavLink
-          to='/dashboard/adminhome'
+          to='/dashboard/myclasses'
           className={({ isActive }) =>
             `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-purple-400  hover:text-white ${
               isActive ? 'bg-purple-400  text-gray-700' : 'text-gray-600'
             }`
           }
         >
-          <FcSettings className='w-5 h-5' />
+          <FaWallet className='w-5 h-5' />
 
           <span className='mx-4 font-medium'>My Classes</span>
         </NavLink>
@@ -110,16 +111,16 @@ const InstructorDashboard = () => {
         <div>
           <hr />
           <NavLink
-            to='/dashboard/profile'
+            to='/'
             className={({ isActive }) =>
               `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-purple-400  hover:text-white ${
                 isActive ? 'bg-purple-400  text-gray-700' : 'text-gray-600'
               }`
             }
           >
-            <FcSettings className='w-5 h-5' />
+            <FaHome className='w-5 h-5' />
 
-            <span className='mx-4 font-medium'>Profile</span>
+            <span className='mx-4 font-medium'>Home</span>
           </NavLink>
           <button
             onClick={handleLogOut}

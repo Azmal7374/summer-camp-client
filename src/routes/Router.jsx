@@ -5,9 +5,15 @@ import SignUp from "../pages/SignUp/SignUp";
 import Home from "../pages/Home/Home";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../layout/Dashboard";
-import AdminHome from "../pages/AdminHome/AdminHome";
-import AllUsers from "../pages/InstructorDashboard/AllUsers/AllUsers";
+// import AdminHome from "../pages/AdminHome/AdminHome";
 import AdminRoute from "./AdminRoute";
+import AllUsers from "../pages/AdminDashboard/AllUsers/AllUsers";
+import AddAClass from "../pages/InstructorDashboard/AddAClass";
+import MyClasses from "../pages/InstructorDashboard/MyClasses";
+import ManageClasses from "../pages/AdminDashboard/ManageClasses";
+import EnrolledClass from "../pages/StudentDashboard/EnrolledClass";
+import SelectedClass from "../pages/StudentDashboard/SelectedClass";
+import PaymentHistory from "../pages/StudentDashboard/PaymentHistory";
  
 
 
@@ -38,17 +44,40 @@ const router =createBrowserRouter([
         <Dashboard></Dashboard>
         </PrivateRoute>,
         children: [
-            {
-              path:'adminhome',
-              element: <AdminHome></AdminHome>
-            },
+            //admin dashboard
             {
                 path:'allusers',
                 element: 
                 <AllUsers></AllUsers>
               
+            },
+            {
+            path:'manageclasses',
+            element:<ManageClasses></ManageClasses>
+            },
+
+            //instructor dashboard
+            {
+                path:'addaclass',
+                element: <AddAClass></AddAClass>
+            },
+            {
+                path:'myclasses',
+                element:<MyClasses></MyClasses>
+            },
+            //student dashboard
+            {
+             path:'enrolledclass',
+             element:<EnrolledClass></EnrolledClass>
+            },
+            {
+                path:'selectedclass',
+                element:<SelectedClass></SelectedClass>
+            },
+            {
+                path:'paymenthistory',
+                element:<PaymentHistory></PaymentHistory>
             }
-             
         ]
     }
   ]);

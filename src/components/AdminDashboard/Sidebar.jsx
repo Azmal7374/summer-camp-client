@@ -78,7 +78,7 @@ const Sidebar = () => {
           <div className='flex flex-col justify-between flex-1 mt-6'>
             <nav>
             <NavLink
-            to='/dashboard/adminhome'
+            to='/dashboard/manageclasses'
             className={({ isActive }) =>
               `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-purple-400  hover:text-white ${
                 isActive ? 'bg-purple-400  text-gray-700' : 'text-gray-600'
