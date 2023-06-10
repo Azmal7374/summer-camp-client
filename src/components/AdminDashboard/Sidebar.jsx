@@ -2,10 +2,11 @@ import  { useContext, useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 // import Logo from '../Shared/Navbar/Logo'
 import { GrLogout } from 'react-icons/gr'
-import { FcSettings } from 'react-icons/fc'
+import { MdManageAccounts } from 'react-icons/md'
 import { AiOutlineBars } from 'react-icons/ai'
-import {BsFillHouseAddFill } from 'react-icons/bs'
+import {SiManageiq} from 'react-icons/si'
 import { AuthContext } from '../../provider/AuthProvider'
+import { FaHome } from 'react-icons/fa'
 const Sidebar = () => {
   const navigate = useNavigate()
   const [toggle, setToggle] = useState(false)
@@ -85,7 +86,7 @@ const Sidebar = () => {
               }`
             }
           >
-            <FcSettings className='w-5 h-5' />
+        <SiManageiq className='w-5 h-5' />
 
             <span className='mx-4 font-medium'>Manage Classes</span>
           </NavLink>
@@ -99,7 +100,7 @@ const Sidebar = () => {
             }`
           }
         >
-          <FcSettings className='w-5 h-5' />
+          <MdManageAccounts className='w-5 h-5' />
 
           <span className='mx-4 font-medium'>Manage Users</span>
         </NavLink>
@@ -111,16 +112,16 @@ const Sidebar = () => {
         <div>
           <hr />
           <NavLink
-            to='/dashboard/profile'
+            to='/'
             className={({ isActive }) =>
               `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-purple-400  hover:text-white ${
                 isActive ? 'bg-purple-400  text-gray-700' : 'text-gray-600'
               }`
             }
           >
-            <FcSettings className='w-5 h-5' />
+            <FaHome className='w-5 h-5' />
 
-            <span className='mx-4 font-medium'>Profile</span>
+            <span className='mx-4 font-medium'>Home</span>
           </NavLink>
           <button
             onClick={handleLogOut}

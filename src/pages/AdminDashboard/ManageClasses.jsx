@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ManageClasses = () => {
   const { user, loading } = useAuth();
@@ -49,7 +50,6 @@ const handleMakeDeny =(classes) =>{
   .then(data => {
     // console.log(data)
       if(data.modifiedCount > 0){
-        //   refetch();
           Swal.fire({
               position: 'top-end',
               icon: 'success',
@@ -65,6 +65,10 @@ const handleMakeDeny =(classes) =>{
 
   return (
     <div className="overflow-x-auto">
+    <Helmet>
+    <title>Sports Academic | All Users</title>
+    </Helmet>
+       <h3 className="text-3xl font-semibold text-center mb-4">Total Classes:{allClasses.length}</h3>
       <table className="table">
         {/* head */}
         <thead>
