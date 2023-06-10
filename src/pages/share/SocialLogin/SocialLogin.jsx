@@ -40,9 +40,9 @@ const SocialLogin = () => {
       <div className="w-full my-4 text-center">
         <button
           onClick={handleGoogleSignIn}
-          className="btn btn-circle btn-outline"
+          className="btn bg-purple-500 hover:bg-purple-600 btn-circle "
         >
-          <FaGoogle></FaGoogle>
+          <FaGoogle className="text-white"></FaGoogle>
         </button>
       </div>
     </div>

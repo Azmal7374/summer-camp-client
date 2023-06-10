@@ -6,6 +6,7 @@ import { AuthContext } from '../../provider/AuthProvider';
 import SocialLogin from '../share/SocialLogin/SocialLogin';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { useForm } from 'react-hook-form';
 const Login = () => {
  
   const [disabled,setDisabled] = useState(true)
@@ -16,16 +17,14 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || "/"
 
+  const { register, handleSubmit, watch,reset, formState: { errors } } = useForm();
+
    
 
-    const handleLogin =(event) =>{
-         event.preventDefault();
-         const form = event.target;
-         const email = form.email.value;
-         const password = form.password.value;
-         console.log(email, password);
+    const onSubmit =(data) =>{
+         
 
-         signIn(email, password)
+         signIn(data.email, data.password)
          .then(result => {
           const user = result.user;
           console.log(user)
@@ -43,57 +42,64 @@ const Login = () => {
     }
    
     return (
-   <>
+      <>
+      <Helmet>
+      <title> Sports Academic | Login</title>
+      </Helmet>
 
-   <Helmet>
-   <title>Sports Academic | Login</title>
-   </Helmet>
-  
-   <div className="hero min-h-screen bg-slate-400">
-   <div className="hero-content flex-col lg:flex-row-reverse">
-     <div className="text-center md:w-1/2 lg:text-left">
-       <h1 className="text-5xl font-bold">Login now!</h1>
-       <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-     </div>
-    
-       <div className="card-body card   md:w-1/2 max-w-sm shadow-2xl bg-base-100">
-       <form onSubmit={handleLogin} className="">
-         <div className="form-control">
-           <label className="label">
-             <span className="label-text">Email</span>
-           </label>
-           <input type="email" name="email" placeholder="email" className="input input-bordered" />
-         </div>
-         <div className="form-control relative">
-           <label className="label">
-             <span className="label-text">Password</span>
-           </label> 
-           <input type={show ? "text" : "password"}   name="password" placeholder="password" className="input input-bordered" />
-           <label className="label">
-           <p className='absolute bottom-11 left-72'  onClick={() => setShow(!show)}>
-           <small>
-           {
-               show ? <span><FontAwesomeIcon  icon={faEyeSlash} /></span> : <span><FontAwesomeIcon icon={faEye} /></span>
-           }
-           </small>
-           </p>
+      <div className="hero min-h-screen  p-10 mb-">
+       
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+      <h2 className="text-black text-center text-3xl font-bold mt-2">Login Here</h2>
+
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             
-
-             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-           </label>
-         </div>
+    
+            <div className="form-control">
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
+            <input type="email" {...register("email", {required: true})} name="email" placeholder="email" className="p-3 border border-purple-500 outline-none rounded-md" />
+            {errors.email && <span className="text-red-600">email is required</span>}
+          </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Password</span>
+              </label>
+              <input type="password" {...register("password", {
+                  required:true, 
+                  minLength:6, 
+                  maxLength:20,
+                  pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+              })} name="password" placeholder="password" className="p-3 border border-purple-500 outline-none rounded-md"/>
+              {
+                  errors.password?.type === 'required' && <p className="text-red-600">password is required</p>
+              }
+              {
+                  errors.password?.type === 'minLength' && <p className="text-red-600">password must be 6 characters</p>
+              }
+              {
+                  errors.password?.type === 'maxLength' && <p className="text-red-600">password must be less than 20 character</p>
+              }
+              {
+                  errors.password?.type === 'pattern' && <p className="text-red-600">password must have one upper case one lower case, one number and one special characters</p>
+              }
+              <label className="label">
+                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+              </label>
+            </div>
+  
+         
+            <div className="form-control mt-6">
+            <input className="btn bg-purple-500 hover:bg-purple-600 text-white" type="submit" value="Login"></input>
+            </div>
+          </form>
+          <p className="ml-8"><small>New Here? <Link to='/signup'>Create an Account</Link></small></p>
+          <SocialLogin></SocialLogin>
+        </div>
+    </div>
       
-         <div className="form-control mt-6">
-           <input disabled={false}  className="btn btn-primary" type="submit" value="Login" />
-         </div>
-         </form>
-         <p><small>New Here? <Link to='/signup'>Create an Account</Link> </small></p>
-           <SocialLogin></SocialLogin>
-       </div>
-   </div>
- </div>
-   
-   </>
+      </>
     );
 };
 
