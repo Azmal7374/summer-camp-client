@@ -4,9 +4,12 @@ import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../provider/AuthProvider';
 import SocialLogin from '../share/SocialLogin/SocialLogin';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 const Login = () => {
  
   const [disabled,setDisabled] = useState(true)
+  const [show, setShow] = useState(false)
   const {signIn} = useContext(AuthContext)
   const navigate = useNavigate()
   const location = useLocation()
@@ -61,12 +64,21 @@ const Login = () => {
            </label>
            <input type="email" name="email" placeholder="email" className="input input-bordered" />
          </div>
-         <div className="form-control">
+         <div className="form-control relative">
            <label className="label">
              <span className="label-text">Password</span>
            </label> 
-           <input type="password"  name="password" placeholder="password" className="input input-bordered" />
+           <input type={show ? "text" : "password"}   name="password" placeholder="password" className="input input-bordered" />
            <label className="label">
+           <p className='absolute bottom-11 left-72'  onClick={() => setShow(!show)}>
+           <small>
+           {
+               show ? <span><FontAwesomeIcon  icon={faEyeSlash} /></span> : <span><FontAwesomeIcon icon={faEye} /></span>
+           }
+           </small>
+           </p>
+            
+
              <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
            </label>
          </div>
