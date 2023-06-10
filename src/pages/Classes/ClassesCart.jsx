@@ -6,7 +6,24 @@ const ClassesCart = ({classes}) => {
     const [isAdmin] = useAdmin()
     const [isInstructor] = useInstructor()
     const {name, image, instructorName, seats, price} = classes;
-    const className = seats < 1 ? 'bg-red-500': 'bg-slate-100'
+    const className = seats < 1 ? 'bg-red-500': 'bg-slate-100';
+
+
+    const selectClass = () =>{
+      const availableSeats = seats
+      //  let newSeats = ;
+      const addedSelectedClass = {
+        name,
+        image,
+        instructorName,
+        seats,
+        price
+      };
+
+    }
+
+
+
     return (
         <div>
         <div className={`card w-96 shadow-xl ${className}`}>

@@ -25,7 +25,7 @@ const Classes = () => {
     console.log(allClasses)
 
     return (
-        <div className='mt-10 p-10 justify-center grid grid-cols-1 md:grid-cols-3 gap-10'>
+        <div className='mt-10 p-10  grid grid-cols-1 md:grid-cols-3 gap-10'>
             {
                 allClasses.map(classes => <ClassesCart key={classes._id} classes={classes}></ClassesCart>)
             }

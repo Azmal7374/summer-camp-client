@@ -35,7 +35,7 @@ const Navbar = () => {
     <div className=" sticky top-0 z-30 ">
       <div className="navbar  ml-12 ">
         <img data-aos="fade-down" className="w-20 md:w-24 " src={logo} alt="" />
-        <h2 className="sm:w-full md:w-1/2 text-xl md:text-3xl font-bold ml-2 ">
+        <h2 className="w-full   text-xl md:text-3xl font-bold ml-2 ">
           Sports Academic
         </h2>
 
