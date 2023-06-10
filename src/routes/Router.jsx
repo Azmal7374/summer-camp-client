@@ -14,6 +14,7 @@ import ManageClasses from "../pages/AdminDashboard/ManageClasses";
 import EnrolledClass from "../pages/StudentDashboard/EnrolledClass";
 import SelectedClass from "../pages/StudentDashboard/SelectedClass";
 import PaymentHistory from "../pages/StudentDashboard/PaymentHistory";
+import Classes from "../pages/Classes/Classes";
  
 
 
@@ -34,6 +35,10 @@ const router =createBrowserRouter([
             {
                 path:'/signup',
                 element:<SignUp></SignUp>
+            },
+            {
+                path:'/classes',
+                element:<Classes></Classes>
             }
             
         ]

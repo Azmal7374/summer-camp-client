@@ -6,6 +6,7 @@ import { FcSettings } from 'react-icons/fc'
 import { AiOutlineBars } from 'react-icons/ai'
 import {BsFillHouseAddFill } from 'react-icons/bs'
 import { AuthContext } from '../../provider/AuthProvider'
+import { FaHome } from 'react-icons/fa'
 const StudentDashboard = () => {
   const navigate = useNavigate()
   const [toggle, setToggle] = useState(false)
@@ -123,16 +124,16 @@ const StudentDashboard = () => {
         <div>
           <hr />
           <NavLink
-            to='/dashboard/profile'
+            to='/'
             className={({ isActive }) =>
               `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-purple-400  hover:text-white ${
                 isActive ? 'bg-purple-400  text-gray-700' : 'text-gray-600'
               }`
             }
           >
-            <FcSettings className='w-5 h-5' />
+            <FaHome className='w-5 h-5' />
 
-            <span className='mx-4 font-medium'>Profile</span>
+            <span className='mx-4 font-medium'>Home</span>
           </NavLink>
           <button
             onClick={handleLogOut}
