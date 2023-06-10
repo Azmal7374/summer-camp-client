@@ -6,13 +6,7 @@ import ClassesCart from './ClassesCart';
 
 const Classes = () => {
 
-    // const { user, loading } = useAuth();
-    // const [axiosSecure] = useAxiosSecure();
-  
-    // const { data: allClasses = [] } = useQuery(["class"], async () => {
-    //   const res = await axiosSecure.get("/class");
-    //   return res.data;
-    // });
+    
 
 
     const {user, loading} = useAuth();
