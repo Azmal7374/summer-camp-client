@@ -4,7 +4,7 @@ import './PaymentForm.css'
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 
-const PaymentForm = ({ price, cart }) => {
+const PaymentForm = ({ price, selectedClasses }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
@@ -71,11 +71,14 @@ const PaymentForm = ({ price, cart }) => {
         email:user?.email, 
         transactionId: paymentIntent.id,
         price,
-        quantity: cart.length,
-        cartItems:cart.map(item => item._id),
-        menuItems: cart.map(item => item.menuItemId),
+        instructorName:selectedClasses.instructorName,
+        name:selectedClasses.name,
+        studentEmail:selectedClasses.studentEmail,
+        studentName:selectedClasses.studentName,
+        quantity: selectedClasses.seats,
+        image:selectedClasses.image,
+        paymentSatus:selectedClasses.paymentStatus,
         status:'service pending',
-        itemName: cart.map(item => item.name)
       }
       axiosSecure.post('/payments', payment)
       .then(res => {
@@ -109,7 +112,7 @@ const PaymentForm = ({ price, cart }) => {
           }}
         />
         <button
-          className="   btn btn-primary btn-sm mt-4  border  "
+          className="   btn bg-purple-500 text-white hover:bg-purple-600 btn-sm mt-4   "
           type="submit"
           disabled={!stripe || !clientSecret || processing}
         >

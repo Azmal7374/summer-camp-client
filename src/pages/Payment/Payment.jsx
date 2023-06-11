@@ -22,14 +22,15 @@ const Payment = () => {
     return res.data;
   });
   console.log(selectedClasses);
+  const price = selectedClasses.price
+  console.log( price)
 
-  const price = 3;
   return (
     <div>
       <h2 className="text-3xl">Taka o teka tumi uira aso...</h2>
 
       <Elements stripe={stripePromise}>
-        <PaymentForm price={price}></PaymentForm>
+        <PaymentForm price={price} selectedClasses={selectedClasses}></PaymentForm>
       </Elements>
     </div>
   );
