@@ -16,6 +16,7 @@ import SelectedClass from "../pages/StudentDashboard/SelectedClass";
 import PaymentHistory from "../pages/StudentDashboard/PaymentHistory";
 import Classes from "../pages/Classes/Classes";
 import AllInstructors from "../pages/AllInstructors/AllInstructors";
+import Payment from "../pages/Payment/Payment";
  
 
 
@@ -90,6 +91,14 @@ const router =createBrowserRouter([
             {
                 path:'paymenthistory',
                 element:<PaymentHistory></PaymentHistory>
+            },
+           
+
+            {
+                path:'payment/:id',
+                element:<Payment></Payment>,
+                // loader:({params}) => fetch(`http://localhost:5000/savedClass/${params.id}`)
+                
             }
         ]
     }

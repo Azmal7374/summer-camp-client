@@ -2,7 +2,9 @@ import React from 'react';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import useAuth from '../../hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
-import SelectedClassCard from './SelectedClassCard';
+import { Link } from 'react-router-dom';
+
+
 
 const SelectedClass = () => {
     const { user, loading } = useAuth();
@@ -24,7 +26,7 @@ const SelectedClass = () => {
               <th>Class Name</th>
               <th>Price</th>
               <th>Seats</th>
-              <th>Enroll</th>
+              <th>Payment Status</th>
               <th>Pay</th>
               <th>Delete</th>
             </tr>
@@ -43,16 +45,17 @@ const SelectedClass = () => {
                 <td>{classes.name}</td>
                 <td>{classes.price}</td>
                 <td>{classes.seats}</td>
-                <td>4</td>
+                <td>{classes.paymentStatus}</td>
                 <td> 
          
                
-                <button onClick={()=>handleMakeAdmin(user)} className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white   `}> Pay </button>
+               <Link to={`/dashboard/payment/${classes._id}`}>
+               <button  className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white   `}> Pay </button></Link>
              
             
             </td>
             <td>
-            <button onClick={()=>handleMakeAdmin(user)} className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white   `}> Delete </button>
+            <button className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white   `}> Delete </button>
             </td>
               </tr>
             ))}

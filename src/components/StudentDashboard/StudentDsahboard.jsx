@@ -4,9 +4,10 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { GrLogout } from 'react-icons/gr'
 import { FcSettings } from 'react-icons/fc'
 import { AiOutlineBars } from 'react-icons/ai'
+import { BiSelectMultiple } from 'react-icons/bi'
 import {BsFillHouseAddFill } from 'react-icons/bs'
 import { AuthContext } from '../../provider/AuthProvider'
-import { FaHome } from 'react-icons/fa'
+import { FaAmazonPay, FaHome } from 'react-icons/fa'
 import { MdPayment } from 'react-icons/md'
 const StudentDashboard = () => {
   const navigate = useNavigate()
@@ -87,7 +88,7 @@ const StudentDashboard = () => {
               }`
             }
           >
-            <FcSettings className='w-5 h-5' />
+            <BiSelectMultiple className='w-5 h-5' />
 
             <span className='mx-4 font-medium'>My Selected Classes</span>
           </NavLink>
@@ -100,7 +101,7 @@ const StudentDashboard = () => {
             }`
           }
         >
-          <FcSettings className='w-5 h-5' />
+        <MdPayment className='w-5 h-5' />
 
           <span className='mx-4 font-medium'>My Enrolled Classes</span>
         </NavLink>
@@ -113,7 +114,8 @@ const StudentDashboard = () => {
           }`
         }
       >
-        <MdPayment className='w-5 h-5' />
+       
+        <FaAmazonPay className='w-5 h-5' />
 
         <span className='mx-4 font-medium'>Payment History</span>
       </NavLink>
@@ -136,6 +138,19 @@ const StudentDashboard = () => {
 
             <span className='mx-4 font-medium'>Home</span>
           </NavLink>
+
+          <NavLink
+          to='/'
+          className={({ isActive }) =>
+            `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-purple-400  hover:text-white ${
+              isActive ? 'bg-purple-400  text-gray-700' : 'text-gray-600'
+            }`
+          }
+        >
+          <AiOutlineBars className='w-5 h-5' />
+
+          <span className='mx-4 font-medium'>Classes</span>
+        </NavLink>
           <button
             onClick={handleLogOut}
             className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-purple-400  hover:text-white transition-colors duration-300 transform'
