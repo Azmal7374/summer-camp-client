@@ -1,18 +1,6 @@
 import React from 'react';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
-import useAuth from '../../hooks/useAuth';
-import { useQuery } from '@tanstack/react-query';
-import SelectedClassCard from './SelectedClassCard';
 
-const SelectedClass = () => {
-    const { user, loading } = useAuth();
-    const [axiosSecure] = useAxiosSecure();
-      console.log(user.email)
-    const { data: selectedClasses = [] } = useQuery(["class"], async () => {
-      const res = await axiosSecure.get(`/savedClass/${user?.email}`);
-      return res.data;
-    });
-  console.log(selectedClasses)
+const SelectedClassCard = ({classes}) => {
     return (
         <div className="overflow-x-auto">
         <table className="table">
@@ -24,13 +12,13 @@ const SelectedClass = () => {
               <th>Class Name</th>
               <th>Price</th>
               <th>Seats</th>
+              <th>Status</th>
               <th>Enroll</th>
-              <th>Pay</th>
-              <th>Delete</th>
+              <th>Feedback</th>
             </tr>
           </thead>
           <tbody>
-            {selectedClasses.map((classes, index) => (
+            {allClasses.map((classes, index) => (
               <tr key={classes._id}>
                 <th>{index + 1}</th>
                 <td>
@@ -43,16 +31,16 @@ const SelectedClass = () => {
                 <td>{classes.name}</td>
                 <td>{classes.price}</td>
                 <td>{classes.seats}</td>
+                <td>{classes.status}</td>
                 <td>4</td>
                 <td> 
          
-               
-                <button onClick={()=>handleMakeAdmin(user)} className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white   `}> Pay </button>
+                {
+                  classes.status === 'pending'  ? <button onClick={()=>handleMakeAdmin(user)} className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white   `}> Feedback </button> :
+                   ""
+                }
              
             
-            </td>
-            <td>
-            <button onClick={()=>handleMakeAdmin(user)} className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white   `}> Delete </button>
             </td>
               </tr>
             ))}
@@ -62,4 +50,4 @@ const SelectedClass = () => {
     );
 };
 
-export default SelectedClass;
+export default SelectedClassCard;

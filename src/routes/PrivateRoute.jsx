@@ -7,17 +7,18 @@ const PrivateRoute = ({children}) => {
     
     const{user,loading} = useContext(AuthContext)
     const location = useLocation()
+    console.log(location)
 
 
     if(loading){
        return  <Spiner></Spiner>
     }
 
-    if(user){
+   if(user){
         return children
     }
 
-    return  <Navigate to='login' state={{from: location}} replace></Navigate>
+    return  <Navigate to='/login' state={{from: location}} replace></Navigate>
 };
 
 export default PrivateRoute;

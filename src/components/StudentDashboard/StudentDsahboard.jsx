@@ -7,6 +7,7 @@ import { AiOutlineBars } from 'react-icons/ai'
 import {BsFillHouseAddFill } from 'react-icons/bs'
 import { AuthContext } from '../../provider/AuthProvider'
 import { FaHome } from 'react-icons/fa'
+import { MdPayment } from 'react-icons/md'
 const StudentDashboard = () => {
   const navigate = useNavigate()
   const [toggle, setToggle] = useState(false)
@@ -112,7 +113,7 @@ const StudentDashboard = () => {
           }`
         }
       >
-        <FcSettings className='w-5 h-5' />
+        <MdPayment className='w-5 h-5' />
 
         <span className='mx-4 font-medium'>Payment History</span>
       </NavLink>

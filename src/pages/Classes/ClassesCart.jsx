@@ -32,6 +32,7 @@ const ClassesCart = ({classes}) => {
       const paymentStatus = 'unpaid'
       const addedSelectedValue = {
         studentName:user?.displayName,
+        studentEmail:user?.email ,
         name,
         image,
         instructorName,
@@ -61,7 +62,7 @@ const ClassesCart = ({classes}) => {
         .then(data => {
           console.log(data)
             if(data.modifiedCount > 0){
-                // refetch();
+                refetch();
                 console.log(`${classes.seats} is decrease`)
             }
         })
