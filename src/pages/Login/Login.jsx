@@ -62,16 +62,23 @@ const Login = () => {
             <input type="email" {...register("email", {required: true})} name="email" placeholder="email" className="p-3 border border-purple-500 outline-none rounded-md" />
             {errors.email && <span className="text-red-600">email is required</span>}
           </div>
-            <div className="form-control">
+            <div className="form-control relative">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input type="password" {...register("password", {
+              <input type={show ? "text" : "password"} {...register("password", {
                   required:true, 
                   minLength:6, 
                   maxLength:20,
                   pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
               })} name="password" placeholder="password" className="p-3 border border-purple-500 outline-none rounded-md"/>
+              <p className='absolute bottom-12 left-72 '  onClick={() => setShow(!show)}>
+              <small>
+              {
+                  show ? <span><FontAwesomeIcon  icon={faEyeSlash} /></span> : <span><FontAwesomeIcon icon={faEye} /></span>
+              }
+              </small>
+              </p>
               {
                   errors.password?.type === 'required' && <p className="text-red-600">password is required</p>
               }

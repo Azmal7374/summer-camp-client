@@ -16,7 +16,7 @@ const Classes = () => {
         const res = await axiosSecure.get('/approve');
         return res.data;
     })
-    console.log(allClasses)
+    // console.log(allClasses)
 
     return (
         <div className='mt-10 p-10  grid grid-cols-1 md:grid-cols-3 gap-10'>
