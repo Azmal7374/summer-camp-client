@@ -30,7 +30,7 @@ const Payment = () => {
       <h2 className="text-3xl">Enroll With: {selectedClasses.name}</h2>
 
       <Elements stripe={stripePromise}>
-        <PaymentForm price={price} selectedClasses={selectedClasses}></PaymentForm>
+        <PaymentForm price={price} selectedClasses={selectedClasses} id={id}></PaymentForm>
       </Elements>
     </div>
   );

@@ -15,7 +15,7 @@ const PaymentForm = ({ price, selectedClasses }) => {
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState('')
   // console.log(price)
-  // console.log(selectedClasses)
+  console.log(selectedClasses._id)
 
   useEffect(() => {
      if (price > 0) {
@@ -88,9 +88,14 @@ const PaymentForm = ({ price, selectedClasses }) => {
         console.log(res.data)
 
         if(res.data.insertResult.insertedId){
+          axiosSecure.put(`/payment/${selectedClasses.name}`)
+          .then(res => {
+            console.log(res.data)
+          })
          toast.success('Successfully Enrolled!')
         }
       })
+
       
     }
   };

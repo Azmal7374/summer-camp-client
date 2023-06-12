@@ -249,7 +249,7 @@ const Navbar = () => {
         {/* Toggle button here */}
          
           <label className="w-2 h-2 swap  ">
-            <input className="w-0    bg-transparent "
+            <input className="w-0  bg-transparent "
               type="checkbox"
               onChange={handleToggle}
               checked={theme === "light" ? false : true}
