@@ -6,7 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const Main = () => {
     return (
-        <div>
+        <div className='bg-base-100'>
         <ToastContainer></ToastContainer>
             <Navbar></Navbar>
             <Outlet></Outlet>

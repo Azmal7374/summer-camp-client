@@ -53,14 +53,14 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" sticky top-0 z-30 ">
-      <div className="navbar  ml-12 ">
-        <img data-aos="fade-down" className="w-20 md:w-24 " src={logo} alt="" />
-        <h2 className="w-full   text-xl md:text-3xl font-bold ml-2 ">
+    <div className=" sticky bg-base-100 shadow-lg top-0 z-30 ">
+      <div className="navbar ml-4 md:ml-12 ">
+        <img data-aos="fade-down" className="w-12 md:w-24 " src={logo} alt="" />
+        <h2 className="w-full   text-l md:text-3xl font-bold ml-2 ">
           Sports Academic
         </h2>
 
-        <div className="navbar-end">
+        <div className="">
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
@@ -170,9 +170,9 @@ const Navbar = () => {
                 Home
               </NavLink>
             </p>
-            <p className="mx-4  my-4">
+            <p className="  my-4">
               {user && (
-                <p className="mx-4 ">
+                <p className=" ">
                   <NavLink
                     to="/instructors"
                     className={({ isActive }) =>
@@ -242,28 +242,32 @@ const Navbar = () => {
             )}
           </ul>
 
-          <div className="">
-          {/* Toggle button here */}
-          <button className="btn btn-square ">
-            <label className=" w-12 h-12">
-              <input
-                type="checkbox"
-                onChange={handleToggle}
-                checked={theme === "light" ? false : true}
-              />
-              {/* light theme sun image */}
-              <p  className="w-8 h-8 swap-on"><MdOutlineLightMode></MdOutlineLightMode></p>
+         
+        </div>
+        <div className="navbar-end  lg:mr-20" >
+        <div className="mt-4 mr-2 md:mr-4">
+        {/* Toggle button here */}
+         
+          <label className="w-2 h-2 swap  ">
+            <input className="w-0    bg-transparent "
+              type="checkbox"
+              onChange={handleToggle}
+              checked={theme === "light" ? false : true}
+            />
              
-              {/* dark theme moon image */}
-             <p className="w-8 h-8 swap-off"> <MdDarkMode></MdDarkMode></p>
-            </label>
-          </button>
-        </div>
-        </div>
-        <div className="navbar-end mr-12 lg:mr-20" data-aos="fade-down">
+            <MdDarkMode className="w-8 h-8 swap-on"> </MdDarkMode>
+ 
+            <MdOutlineLightMode className="w-8 h-8 swap-off"></MdOutlineLightMode>
+          </label>
+
+          
+
+          
+      </div>
+
           {user && (
             <img
-              className="h-20 w-20  rounded-full"
+              className=" ml-2 w-12 h-12 md:w-20 md:h-20  rounded-full"
               title={user?.displayName}
               src={user ? user.photoURL : ""}
             />
