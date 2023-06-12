@@ -64,7 +64,7 @@ const AllUsers = () => {
         <Helmet>
         <title>Sports Academic | All Users</title>
         </Helmet>
-           <h3 className="text-3xl font-semibold text-center mb-4">Total Users:{users.length}</h3>
+           <h3 className="text-3xl font-semibold text-center mb-4 text-purple-500">Total Users:{users.length}</h3>
 
 
            <div className="overflow-x-auto">
@@ -98,7 +98,7 @@ const AllUsers = () => {
     <td> 
        
     {
-        user.role === 'admin'  ? <button onClick={()=>handleMakeAdmin(user)} className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white  opacity-50 cursor-not-allowed `}>  Make Admin </button> :
+        user.role === 'admin'  ? <button onClick={()=>handleMakeAdmin(user)} className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white  opacity-50 hover:cursor-not-allowed `}>  Make Admin </button> :
         <button onClick={()=>handleMakeAdmin(user)} className={`btn  btn-ghost bg-purple-500 hover:bg-purple-600 text-white  `}>  Make Admin </button>
     }
  
@@ -109,7 +109,7 @@ const AllUsers = () => {
        
  
 {
-    user.role === 'admin' ||  user.role === 'instructor' ? <button onClick={()=>handleMakeAdmin(user)} className={`btn btn-ghost bg-purple-500 hover:bg-purple-600 text-white   opacity-50 cursor-not-allowed`}> Make  Instructor  </button> :
+    user.role === 'admin' ||  user.role === 'instructor' ? <button onClick={()=>handleMakeAdmin(user)} className={`btn btn-ghost bg-purple-500 hover:bg-purple-600 text-white   opacity-50 hover:cursor-not-allowed`}> Make  Instructor  </button> :
     <button onClick={()=>handleMakeInstructor(user)} className={`btn btn-ghost bg-purple-500 hover:bg-purple-600 text-white  `}> Make  Instructor </button>
 }
 

@@ -47,63 +47,59 @@ const Login = () => {
       <title> Sports Academic | Login</title>
       </Helmet>
 
-      <div className="hero min-h-screen  p-10 mb-">
-       
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-      <h2 className="text-black text-center text-3xl font-bold mt-2">Login Here</h2>
-
-          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+      <div className=" w-96 mx-auto bg-slate-100">
+      <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             
     
-            <div className="form-control">
-            <label className="label">
-              <span className="label-text">Email</span>
-            </label>
-            <input type="email" {...register("email", {required: true})} name="email" placeholder="email" className="p-3 border border-purple-500 outline-none rounded-md" />
-            {errors.email && <span className="text-red-600">email is required</span>}
-          </div>
-            <div className="form-control relative">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input type={show ? "text" : "password"} {...register("password", {
-                  required:true, 
-                  minLength:6, 
-                  maxLength:20,
-                  pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
-              })} name="password" placeholder="password" className="p-3 border border-purple-500 outline-none rounded-md"/>
-              <p className='absolute bottom-12 left-72 '  onClick={() => setShow(!show)}>
-              <small>
-              {
-                  show ? <span><FontAwesomeIcon  icon={faEyeSlash} /></span> : <span><FontAwesomeIcon icon={faEye} /></span>
-              }
-              </small>
-              </p>
-              {
-                  errors.password?.type === 'required' && <p className="text-red-600">password is required</p>
-              }
-              {
-                  errors.password?.type === 'minLength' && <p className="text-red-600">password must be 6 characters</p>
-              }
-              {
-                  errors.password?.type === 'maxLength' && <p className="text-red-600">password must be less than 20 character</p>
-              }
-              {
-                  errors.password?.type === 'pattern' && <p className="text-red-600">password must have one upper case one lower case, one number and one special characters</p>
-              }
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-              </label>
-            </div>
-  
-         
-            <div className="form-control mt-6">
-            <input className="btn bg-purple-500 hover:bg-purple-600 text-white" type="submit" value="Login"></input>
-            </div>
-          </form>
-          <p className="ml-8"><small>New Here? <Link to='/signup'>Create an Account</Link></small></p>
-          <SocialLogin></SocialLogin>
-        </div>
+      <div className="form-control">
+      <label className="label">
+        <span className="label-text">Email</span>
+      </label>
+      <input type="email" {...register("email", {required: true})} name="email" placeholder="email" className="p-3 border border-purple-500 outline-none rounded-md" />
+      {errors.email && <span className="text-red-600">email is required</span>}
+    </div>
+      <div className="form-control relative">
+        <label className="label">
+          <span className="label-text">Password</span>
+        </label>
+        <input type={show ? "text" : "password"} {...register("password", {
+            required:true, 
+            minLength:6, 
+            maxLength:20,
+            pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+        })} name="password" placeholder="password" className="p-3 border border-purple-500 outline-none rounded-md"/>
+        <p className='absolute bottom-20 left-72 '  onClick={() => setShow(!show)}>
+        <small>
+        {
+            show ? <span><FontAwesomeIcon  icon={faEyeSlash} /></span> : <span><FontAwesomeIcon icon={faEye} /></span>
+        }
+        </small>
+        </p>
+        {
+            errors.password?.type === 'required' && <p className="text-red-600">password is required</p>
+        }
+        {
+            errors.password?.type === 'minLength' && <p className="text-red-600">password must be 6 characters</p>
+        }
+        {
+            errors.password?.type === 'maxLength' && <p className="text-red-600">password must be less than 20 character</p>
+        }
+        {
+            errors.password?.type === 'pattern' && <p className="text-red-600">password must have one upper case one lower case, one number and one special characters</p>
+        }
+        <label className="label">
+          <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+        </label>
+      </div>
+
+   
+      <div className="form-control mt-6">
+      <input className="btn bg-purple-500 hover:bg-purple-600 text-white" type="submit" value="Login"></input>
+      </div>
+    </form>
+    <p className="ml-8"><small>New Here? <Link to='/signup'>Create an Account</Link></small></p>
+    <SocialLogin></SocialLogin>
+      
     </div>
       
       </>

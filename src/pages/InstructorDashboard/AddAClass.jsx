@@ -28,7 +28,7 @@ const AddAClass = () => {
           const newItem = {
             name,
             image: imgURL,
-            seats,
+            seats: parseFloat(seats),
             price: parseFloat(price),
             instructorName,
             instructorEmail,

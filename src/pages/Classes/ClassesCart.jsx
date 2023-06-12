@@ -96,7 +96,7 @@ const ClassesCart = ({classes}) => {
           <p>Available Price: {price}</p>
           <div className="card-actions">
           {
-            seats < 1 || isAdmin || isInstructor?   <button className="btn  bg-purple-500 hover:bg-purple-600 text-white opacity-50 cursor-not-allowed ">Select</button> :
+            seats < 1 || isAdmin || isInstructor?   <button className="btn  bg-purple-500 hover:bg-purple-600 text-white opacity-50 hover:cursor-not-allowed ">Select</button> :
             <button onClick={()=>selectClass(classes)} className="btn  bg-purple-500 hover:bg-purple-600 text-white">Select</button>
           }
           </div>

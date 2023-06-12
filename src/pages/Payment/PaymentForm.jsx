@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import './PaymentForm.css'
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const PaymentForm = ({ price, selectedClasses }) => {
   const stripe = useStripe();
@@ -13,12 +14,14 @@ const PaymentForm = ({ price, selectedClasses }) => {
   const [clientSecret, setClientSecret] = useState("");
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState('')
+  // console.log(price)
+  // console.log(selectedClasses)
 
   useEffect(() => {
      if (price > 0) {
             axiosSecure.post('/create-payment-intent', { price })
                 .then(res => {
-                    console.log(res.data.clientSecret)
+                    // console.log(res.data.clientSecret)
                     setClientSecret(res.data.clientSecret);
                 })
         }
@@ -77,15 +80,15 @@ const PaymentForm = ({ price, selectedClasses }) => {
         studentName:selectedClasses.studentName,
         quantity: selectedClasses.seats,
         image:selectedClasses.image,
-        paymentSatus:selectedClasses.paymentStatus,
-        status:'service pending',
+        paymentStatus:'paid',
+        enroll:'successfully',
       }
-      axiosSecure.post('/payments', payment)
+      axiosSecure.post(`/payments/${selectedClasses._id}`, payment)
       .then(res => {
         console.log(res.data)
 
-        if(res.data.insertedId){
-          alert('Done')
+        if(res.data.insertResult.insertedId){
+         toast.success('Successfully Enrolled!')
         }
       })
       
@@ -120,7 +123,7 @@ const PaymentForm = ({ price, selectedClasses }) => {
         </button>
       </form>
       {cardError && <p className="text-red-400 text-center">{cardError}</p>}
-      {transactionId && <p className="text-green-500  ">Transaction Complete With: {transactionId}</p>}
+      {transactionId && <p className="text-purple-500  ">Transaction Complete With: {transactionId}</p>}
     </>
   );
 };

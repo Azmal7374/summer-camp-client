@@ -125,7 +125,9 @@ const Sidebar = () => {
           </NavLink>
           <button
             onClick={handleLogOut}
-            className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-purple-400  hover:text-white transition-colors duration-300 transform'
+            className='flex w-full items-center px-4 py-2 mt-5 text-gray-700 
+            bg-purple-500 
+            hover:bg-purple-400  hover:text-white transition-colors duration-300 transform'
           >
             <GrLogout className='w-5 h-5' />
 

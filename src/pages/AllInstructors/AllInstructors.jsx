@@ -12,9 +12,9 @@ const AllInstructors = () => {
     })
     console.log(allInstructor)
     return (
-        <div className='mt-10 p-10  grid grid-cols-1 md:grid-cols-3 gap-10'>
+        <div className='mt-10 p-10  grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-32'>
             {
-                allInstructor.map(instructor => <InstructorCard key={instructor._id} instructor={instructor}></InstructorCard>)
+            allInstructor.map(instructor => <InstructorCard key={instructor._id} instructor={instructor}></InstructorCard>)
             }
         </div>
     );

@@ -27,7 +27,7 @@ const Payment = () => {
 
   return (
     <div>
-      <h2 className="text-3xl">Taka o teka tumi uira aso...</h2>
+      <h2 className="text-3xl">Enroll With: {selectedClasses.name}</h2>
 
       <Elements stripe={stripePromise}>
         <PaymentForm price={price} selectedClasses={selectedClasses}></PaymentForm>

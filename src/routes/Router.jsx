@@ -17,6 +17,7 @@ import PaymentHistory from "../pages/StudentDashboard/PaymentHistory";
 import Classes from "../pages/Classes/Classes";
 import AllInstructors from "../pages/AllInstructors/AllInstructors";
 import Payment from "../pages/Payment/Payment";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
  
 
 
@@ -25,6 +26,7 @@ const router =createBrowserRouter([
     {
         path:'/',
         element:<Main></Main>,
+        errorElement:<ErrorPage></ErrorPage>,
         children:[
             {
                 path:'/',

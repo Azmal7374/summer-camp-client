@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   BoltIcon,
   Bars3BottomRightIcon,
@@ -19,6 +19,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../../../provider/AuthProvider";
 import logo from '../../../assets/logo2.avif'
+import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,6 +30,26 @@ const Navbar = () => {
       .catch(() => {
         console.log(error.message);
       });
+  };
+
+
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, [theme]);
+
+  const handleToggle = (e) => {
+    if (e.target.checked) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
   };
 
   return (
@@ -124,13 +145,13 @@ const Navbar = () => {
                   </p>
                 </>
               ) : (
-                <p className="px-2 py-2">
+                <p className="px-2 ">
                   <NavLink>
                     {" "}
                     <button
-                      onClick={logOut}
-                      className="text-orange-600 font-bold"
-                    >
+                    onClick={logOut}
+                    className="bg-purple-500 hover:bg-purple-600  font-bold"
+                  >
                       Sign Out
                     </button>
                   </NavLink>
@@ -203,7 +224,7 @@ const Navbar = () => {
                 </p>
               </>
             ) : (
-              <p className="mx-4  my-4">
+              <p className="mx-4 ">
                 <NavLink
                   to="/signup"
                   className={({ isActive }) =>
@@ -212,7 +233,7 @@ const Navbar = () => {
                 >
                   <button
                     onClick={logOut}
-                    className="text-orange-600 font-bold"
+                    className="bg-purple-500 hover:bg-purple-600  font-bold"
                   >
                     Sign Out
                   </button>
@@ -220,6 +241,24 @@ const Navbar = () => {
               </p>
             )}
           </ul>
+
+          <div className="">
+          {/* Toggle button here */}
+          <button className="btn btn-square ">
+            <label className=" w-12 h-12">
+              <input
+                type="checkbox"
+                onChange={handleToggle}
+                checked={theme === "light" ? false : true}
+              />
+              {/* light theme sun image */}
+              <p  className="w-8 h-8 swap-on"><MdOutlineLightMode></MdOutlineLightMode></p>
+             
+              {/* dark theme moon image */}
+             <p className="w-8 h-8 swap-off"> <MdDarkMode></MdDarkMode></p>
+            </label>
+          </button>
+        </div>
         </div>
         <div className="navbar-end mr-12 lg:mr-20" data-aos="fade-down">
           {user && (
@@ -230,6 +269,7 @@ const Navbar = () => {
             />
           )}
         </div>
+
       </div>
     </div>
   );

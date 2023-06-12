@@ -26,7 +26,6 @@ const MyClasses = () => {
             <th>Price</th>
             <th>Seats</th>
             <th>Status</th>
-            <th>Enroll</th>
             <th>Feedback</th>
           </tr>
         </thead>
@@ -45,7 +44,6 @@ const MyClasses = () => {
               <td>{classes.price}</td>
               <td>{classes.seats}</td>
               <td>{classes.status}</td>
-              <td>4</td>
               <td> 
        
               {
