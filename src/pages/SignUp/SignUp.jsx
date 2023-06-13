@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
 import SocialLogin from "../share/SocialLogin/SocialLogin";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
     const { register, handleSubmit, watch,reset, formState: { errors } } = useForm();
@@ -12,9 +13,14 @@ const SignUp = () => {
 
     const { createUser, updateUserProfile} = useContext(AuthContext)
 
+    
 
     const onSubmit = data =>{
-        createUser(data.email, data.password)
+        
+         if(data.password !== data.confirmPassword){
+         return toast('password Does Not Match')
+         }
+         createUser(data.email, data.password)
         .then(result => {
             const loggedUser = result.user;
             console.log(loggedUser)
@@ -63,21 +69,21 @@ const SignUp = () => {
         <span className="label-text">Name</span>
       </label>
       <input type="text" {...register("name", {required: true})} name="name" placeholder="name" className="p-3 border border-purple-500 outline-none rounded-md " />
-      {errors.name && <span className="text-red-600">name is required</span>}
+      {errors.name && <span className="text-purple-500">name is required</span>}
     </div>
     <div className="form-control">
     <label className="label">
       <span className="label-text">Photo URL</span>
     </label>
     <input type="text" {...register("photoURL", {required: true})}   placeholder="Photo URL" className="p-3 border border-purple-500 rounded-md" />
-    {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
+    {errors.photoURL && <span className="text-purple-500">Photo URL is required</span>}
   </div>
     <div className="form-control">
     <label className="label">
       <span className="label-text">Email</span>
     </label>
     <input type="email" {...register("email", {required: true})} name="email" placeholder="email" className="p-3 border border-purple-500 outline-none rounded-md" />
-    {errors.email && <span className="text-red-600">email is required</span>}
+    {errors.email && <span className="text-purple-500">email is required</span>}
   </div>
     <div className="form-control">
       <label className="label">
@@ -90,7 +96,7 @@ const SignUp = () => {
           pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
       })} name="password" placeholder="password" className="p-3 border border-purple-500 outline-none rounded-md"/>
       {
-          errors.password?.type === 'required' && <p className="text-red-600">password is required</p>
+          errors.password?.type === 'required' && <p className="text-purple-500">password is required</p>
       }
       {
           errors.password?.type === 'minLength' && <p className="text-red-600">password must be 6 characters</p>
@@ -99,7 +105,7 @@ const SignUp = () => {
           errors.password?.type === 'maxLength' && <p className="text-red-600">password must be less than 20 character</p>
       }
       {
-          errors.password?.type === 'pattern' && <p className="text-red-600">password must have one upper case one lower case, one number and one special characters</p>
+          errors.password?.type === 'pattern' && <p className="text-purple-500">password must have one upper case one lower case, one number and one special characters</p>
       }
      
     </div>
@@ -115,16 +121,16 @@ const SignUp = () => {
         pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
     })} name="confirmPassword" placeholder="confirm password" className="p-3 border border-purple-500 outline-none rounded-md" />
     {
-        errors.confirmPassword?.type === 'required' && <p className="text-red-600">password is required</p>
+        errors.confirmPassword?.type === 'required' && <p className="text-purple-500">password is required</p>
     }
     {
-        errors.confirmPassword?.type === 'minLength' && <p className="text-red-600">password must be 6 characters</p>
+        errors.confirmPassword?.type === 'minLength' && <p className="text-purple-500">password must be 6 characters</p>
     }
     {
-        errors.confirmPassword?.type === 'maxLength' && <p className="text-red-600">password must be less than 20 character</p>
+        errors.confirmPassword?.type === 'maxLength' && <p className="text-purple-500">password must be less than 20 character</p>
     }
     {
-        errors.confirmPassword?.type === 'pattern' && <p className="text-red-600">password must have one upper case one lower case, one number and one special characters</p>
+        errors.confirmPassword?.type === 'pattern' && <p className="text-purple-500">password must have one upper case one lower case, one number and one special characters</p>
     }
    
   </div>

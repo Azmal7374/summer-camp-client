@@ -6,10 +6,10 @@ import 'react-awesome-slider/dist/styles.css';
 
 const Banner = () => {
   return (
-      <div className="mt-10 mx-10">
-      <AwesomeSlider className="width-full" animation="cubeAnimation">
+      <div className="mt-10 ">
+      <AwesomeSlider className="" animation="cubeAnimation ">
       <div>
-        {" "}
+       
         <img src="https://img.freepik.com/free-photo/young-basketball-player-shoot_53876-30148.jpg?size=626&ext=jpg&ga=GA1.1.220873417.1673880723&semt=ais" />
       </div>
       <div>
