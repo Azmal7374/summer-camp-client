@@ -6,6 +6,8 @@ import {
   ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/solid";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEye,
@@ -20,6 +22,7 @@ import {
 import { AuthContext } from "../../../provider/AuthProvider";
 import logo from '../../../assets/logo2.avif'
 import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
+import { Fade } from "react-awesome-reveal";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -56,9 +59,11 @@ const Navbar = () => {
     <div className=" sticky bg-base-100  top-0 z-30">
       <div className="navbar ml-4 md:ml-12 ">
         <img data-aos="fade-down" className="w-12 md:w-24 " src={logo} alt="" />
-        <h2 className="w-full   text-l md:text-3xl font-bold ml-2 ">
+        <Fade className='w-full   text-l md:text-3xl font-bold ml-2 ' delay={1e3} cascade damping={1e-1}>
           Sports Academic
-        </h2>
+           
+        </Fade>
+       
 
         <div className="">
           <div className="dropdown dropdown-end">
@@ -245,7 +250,7 @@ const Navbar = () => {
          
         </div>
         <div className="navbar-end  lg:mr-20" >
-        <div className="mt-4 mr-2 md:mr-4">
+        <div className="mt-4 mr-6 md:mr-12">
         {/* Toggle button here */}
          
           <label className="w-2 h-2 swap  ">
@@ -266,11 +271,17 @@ const Navbar = () => {
       </div>
 
           {user && (
+            <motion.div
+            className="box"
+            
+            whileHover={{ scale: [null, 1.5, 1.4] }}
+            transition={{ duration: 0.3 }}>
             <img
               className=" ml-2 w-12 h-12 md:w-20 md:h-20  rounded-full"
               title={user?.displayName}
               src={user ? user.photoURL : ""}
             />
+            </motion.div>
           )}
         </div>
 
