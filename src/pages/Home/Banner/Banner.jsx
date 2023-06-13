@@ -1,6 +1,5 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
-import AwesomeSlider from "react-awesome-slider";
+import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 import 'react-awesome-slider/dist/styles.css';
 
@@ -10,11 +9,11 @@ const Banner = () => {
       <AwesomeSlider className="" animation="cubeAnimation ">
       <div>
        
-        <img src="https://img.freepik.com/free-photo/young-basketball-player-shoot_53876-30148.jpg?size=626&ext=jpg&ga=GA1.1.220873417.1673880723&semt=ais" />
+        <img className="" src="https://img.freepik.com/free-photo/young-basketball-player-shoot_53876-30148.jpg?size=626&ext=jpg&ga=GA1.1.220873417.1673880723&semt=ais" />
       </div>
       <div>
         <img
-          src="https://img.freepik.com/free-photo/kids-home-playing-with-toys_23-2148630637.jpg?size=626&ext=jpg&ga=GA1.1.220873417.1673880723&semt=ais"
+          src="https://img.freepik.com/free-photo/top-view-classic-chess-board-still-life_23-2150314908.jpg?size=626&ext=jpg&ga=GA1.1.220873417.1673880723&semt=ais"
           alt=""
         />
       </div>
@@ -32,6 +31,12 @@ const Banner = () => {
       <div>
         <img src="https://img.freepik.com/free-photo/full-shot-kids-playing-kickball_23-2149457247.jpg?size=626&ext=jpg&ga=GA1.1.220873417.1673880723&semt=ais" />
       </div>
+      <div>
+      <img src="https://img.freepik.com/premium-photo/little-girl-learning-swim-pool_98296-1166.jpg?size=626&ext=jpg&ga=GA1.1.220873417.1673880723&semt=sph" />
+    </div>
+    <div>
+    <img src="https://img.freepik.com/free-photo/badminton-concept-with-shuttlecock-racket_23-2149940871.jpg?size=626&ext=jpg&ga=GA1.1.220873417.1673880723&semt=sph" />
+  </div>
     </AwesomeSlider>
       </div>
   );

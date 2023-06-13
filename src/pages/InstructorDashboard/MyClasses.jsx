@@ -25,8 +25,10 @@ const MyClasses = () => {
             <th>Class Name</th>
             <th>Price</th>
             <th>Seats</th>
+            <th>Enroll</th>
             <th>Status</th>
             <th>Feedback</th>
+            <th>Update</th>
           </tr>
         </thead>
         <tbody>
@@ -43,15 +45,19 @@ const MyClasses = () => {
               <td>{classes.name}</td>
               <td>{classes.price}</td>
               <td>{classes.seats}</td>
+              <td>{classes.booking}</td>
               <td>{classes.status}</td>
               <td> 
        
               {
-                classes.status === 'pending'  ? <button onClick={()=>handleMakeAdmin(user)} className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white   `}> Feedback </button> :
+                classes.status === 'deny'  ? <button onClick={()=>handleFeedback(user)} className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white   `}> Feedback </button> :
                  ""
               }
            
           
+          </td>
+          <td>
+          <button onClick={()=>handleUpdate(user)} className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white   `}> Update </button>
           </td>
             </tr>
           ))}
