@@ -6,6 +6,7 @@ import {
   faArrowRotateRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { MagnifyingGlass } from "react-loader-spinner";
+import { Fade } from "react-awesome-reveal";
 const TopSportsAnalysis = () => {
   const [fold, setFold] = useState(true);
 
@@ -17,8 +18,12 @@ const TopSportsAnalysis = () => {
 
   return (
     <div className="mt-10">
-      <h2 className="text-3xl font-bold text-center">Top Articles</h2>
-      <div className=" gap-10">
+    <div className='text-center'>
+    <Fade className=' text-3xl font-bold' delay={1e3} cascade damping={1e-1}>
+    Top Articles 
+ </Fade>
+    </div>
+      <div className="mt-4 gap-10">
         <div className="">
           <img
             className="w-96 md:w-full lg:w- p-4 mx-auto"
