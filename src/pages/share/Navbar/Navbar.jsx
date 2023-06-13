@@ -53,7 +53,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" sticky bg-base-100 shadow-lg top-0 z-30 ">
+    <div className=" sticky bg-base-100  top-0 z-30">
       <div className="navbar ml-4 md:ml-12 ">
         <img data-aos="fade-down" className="w-12 md:w-24 " src={logo} alt="" />
         <h2 className="w-full   text-l md:text-3xl font-bold ml-2 ">
@@ -150,7 +150,7 @@ const Navbar = () => {
                     {" "}
                     <button
                     onClick={logOut}
-                    className="bg-purple-500 hover:bg-purple-600  font-bold"
+                    className="bg-purple-500 hover:bg-purple-600  font-bold p-2 text-white rounded-md"
                   >
                       Sign Out
                     </button>
@@ -224,7 +224,7 @@ const Navbar = () => {
                 </p>
               </>
             ) : (
-              <p className="mx-4 ">
+              <p className="mx-4 my-2">
                 <NavLink
                   to="/signup"
                   className={({ isActive }) =>
@@ -233,7 +233,7 @@ const Navbar = () => {
                 >
                   <button
                     onClick={logOut}
-                    className="bg-purple-500 hover:bg-purple-600  font-bold"
+                    className="bg-purple-500 hover:bg-purple-600  font-bold p-2 rounded-md text-white"
                   >
                     Sign Out
                   </button>

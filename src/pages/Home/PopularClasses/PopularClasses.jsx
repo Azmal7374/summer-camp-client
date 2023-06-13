@@ -15,7 +15,7 @@ const PopularClasses = () => {
     return (
      <div className='mt-16'>
        <h2 className='text-center text-3xl font-bold'>Popular Classes</h2>
-     <div className='  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  md:gap-20 lg:gap-14 mb-20'>
+     <div className='  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-10 mb-20'>
      {
       topClasses.slice(0,6).map(top => <Topclasses key={top._id} top={top}></Topclasses>)
      }

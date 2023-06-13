@@ -5,9 +5,9 @@ const Topclasses = ({top}) => {
     // console.log(top)
     return (
         <div>
-        <div className={`card w-96 shadow-xl `}>
+        <div className={`card  shadow-xl `}>
         <figure className="px-10 pt-10">
-          <img src={image} alt="Shoes" className="rounded-xl w-96 h-40" />
+          <img src={image} alt="Shoes" className="rounded-xl w-96 h-60" />
         </figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title">{name}</h2>

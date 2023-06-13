@@ -62,6 +62,36 @@ const handleMakeDeny =(classes) =>{
 }
 
 
+const handleMakeFeedback =(user) =>{
+  console.log(user)
+  const { value: text } =  Swal.fire({
+    input: 'textarea',
+    inputLabel:'Message',
+    inputPlaceholder:'Type your message here...',
+    inputAttributes: {
+      'aria-label': 'Type your message here'
+    },
+    showCancelButton: true
+  })
+  if (text) {
+    console.log(text)
+    Swal.fire(text)
+    axiosSecure.post("/feedback", text).then((data) => {
+      console.log("feedback to Admin ", data.data);
+      if (data.data.insertedId) {
+        reset();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "feedback Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+  }
+}
+
 
   return (
     <div className="overflow-x-auto">
@@ -131,8 +161,8 @@ const handleMakeDeny =(classes) =>{
           <td>
           
           {
-            classes.status === 'deny'  ? <button onClick={()=>handleMakeAdmin(user)} className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white   `}> Feedback </button> :
-            <button onClick={()=>handleMakeAdmin(user)} className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white  opacity-50 cursor-not-allowed`}> Feedback </button>
+            classes.status === 'deny'  ? <button onClick={()=>handleMakeFeedback(user)} className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white   `}> Feedback </button> :
+            <button onClick={()=>handleMakeFeedback(user)} className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white  opacity-50 cursor-not-allowed`}> Feedback </button>
           }
        
       

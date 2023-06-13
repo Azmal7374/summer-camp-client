@@ -15,7 +15,7 @@ const TopInstructors = () => {
     return (
         <div>
         <h2 className='text-center text-3xl font-bold'>Popular Instructor</h2>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-32'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 '>
             {
             allInstructor.slice(0,6).map(instructor => <PopularInstructorCard key={instructor._id} instructor={instructor}></PopularInstructorCard>)
             }

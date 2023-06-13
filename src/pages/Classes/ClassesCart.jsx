@@ -85,9 +85,9 @@ const ClassesCart = ({classes}) => {
 
     return (
         <div>
-        <div className={`card w-96 shadow-xl ${className}`}>
+        <div className={`card w- shadow-xl ${className}`}>
         <figure className="px-10 pt-10">
-          <img src={image} alt="Shoes" className="rounded-xl w-96 h-40" />
+          <img src={image} alt="Shoes" className="rounded-xl w-96 h-60" />
         </figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title">{name}</h2>

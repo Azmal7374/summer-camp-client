@@ -12,7 +12,7 @@ const AllInstructors = () => {
     })
     console.log(allInstructor)
     return (
-        <div className='mt-10 p-10  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-32'>
+        <div className='mt-10 px-10  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10  mb-20'>
             {
             allInstructor.map(instructor => <InstructorCard key={instructor._id} instructor={instructor}></InstructorCard>)
             }
